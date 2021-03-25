@@ -1,0 +1,12 @@
+parameters:
+  level: 8
+  paths:
+    - src
+    - index.php
+    - [PLUGIN_NAME_SLUG].php
+    - uninstall.php
+  exceptionRules:
+    uncheckedExceptions:
+      - RuntimeException
+      - InvalidArgumentException
+      - Doctrine\Common\Annotations\AnnotationException

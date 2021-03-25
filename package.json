@@ -1,0 +1,20 @@
+{
+	"name": "[PLUGIN_NAME_SLUG]",
+	"title": "[PLUGIN_DESC]",
+	"version": "1.0.0",
+	"private": true,
+	"homepage": "https://github.com/dominiccarrington/WordPress-Plugin-Template",
+	"main": "gulpfile.js",
+	"license": "GPL-3.0-or-later",
+	"devDependencies": {
+		"@types/gulp": "^4.0.8",
+		"@types/gulp-autoprefixer": "^0.0.32",
+		"@types/gulp-clean-css": "^4.3.0",
+		"@types/gulp-sass": "^4.0.0",
+		"gulp": "^4.0.2",
+		"gulp-autoprefixer": "^7.0.1",
+		"gulp-clean-css": "^4.3.0",
+		"gulp-minify": "^3.1.0",
+		"gulp-sass": "^4.1.0"
+	}
+}
