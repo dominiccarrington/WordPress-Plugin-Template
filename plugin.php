@@ -18,6 +18,7 @@
 
 declare( strict_types=1 );
 
+use Plugin\Annotations\Base;
 use Doctrine\Common\Cache\PhpFileCache;
 use Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Annotations\AnnotationReader;
@@ -36,7 +37,7 @@ AnnotationRegistry::registerLoader( 'class_exists' );
  *
  * @since 1.0.0
  */
-final class PluginTemplate {
+final class Plugin {
 	/**
 	 * Static instance of the plugin
 	 *
@@ -84,12 +85,22 @@ final class PluginTemplate {
 			try {
 				$reflection_class = new ReflectionClass( $instance );
 
-				foreach ( $reflection_class->getMethods() as $method ) {
-					/** @var ?Base */
-					$annotation = $reader->getMethodAnnotation( $method, Base::class );
+				foreach ($reader->getClassAnnotations($reflection_class) as $annotation) {
+					/** @var Base $annotation */
+					$annotation->on_class($instance, $reflection_class);
+				}
 
-					if ( ! is_null( $annotation ) ) {
+				foreach ( $reflection_class->getMethods() as $method ) {
+					foreach ($reader->getMethodAnnotations( $method ) as $annotation) {
+						/** @var Base $annotation */
 						$annotation->on_method( $instance, $method );
+					}
+				}
+
+				foreach ( $reflection_class->getProperties() as $property ) {
+					foreach ($reader->getPropertyAnnotations($property) as $annotation) {
+						/** @var Base $annotation */
+						$annotation->on_property($instance, $property);
 					}
 				}
 			} catch ( ReflectionException $e ) {
@@ -155,4 +166,4 @@ final class PluginTemplate {
 	}
 }
 
-PluginTemplate::get_instance();
+Plugin::get_instance();

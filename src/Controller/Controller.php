@@ -1,9 +1,9 @@
 <?php
 declare( strict_types=1 );
 
-namespace PluginNamespace\Controller;
+namespace Plugin\Controller;
 
-use PluginTemplate;
+use Plugin;
 
 /**
  * Parent class for all controllers
@@ -12,14 +12,14 @@ abstract class Controller {
 	/**
 	 * The main plugin instance
 	 *
-	 * @var PluginTemplate
+	 * @var Plugin
 	 */
-	private PluginTemplate $plugin;
+	private Plugin $plugin;
 
 	/**
-	 * @param PluginTemplate $plugin The main plugin instance.
+	 * @param Plugin $plugin The main plugin instance.
 	 */
-	public function __construct( PluginTemplate $plugin ) {
+	public function __construct( Plugin $plugin ) {
 		$this->plugin = $plugin;
 	}
 }

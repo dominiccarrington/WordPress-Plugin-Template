@@ -1,7 +1,7 @@
 <?php
 declare( strict_types=1 );
 
-namespace PluginNamespace\Annotations;
+namespace Plugin\Annotations;
 
 use ReflectionClass;
 use ReflectionMethod;
@@ -17,7 +17,7 @@ abstract class Base {
 	/**
 	 * Run on an annotated class
 	 *
-	 * @param object                      $instance Instance of the object containing the method.
+	 * @param Plugin|Controller           $instance Instance of the object containing the method.
 	 * @param ReflectionClass<Controller> $class The class with the annotation.
 	 *
 	 * @throws RuntimeException When method is called but not defined by the child class.
@@ -31,8 +31,8 @@ abstract class Base {
 	/**
 	 * Run on an annotated method
 	 *
-	 * @param object           $instance Instance of the object containing the method.
-	 * @param ReflectionMethod $method The method with the annotation.
+	 * @param Plugin|Controller  $instance Instance of the object containing the method.
+	 * @param ReflectionMethod   $method The method with the annotation.
 	 *
 	 * @throws RuntimeException When method is called but not defined by the child class.
 	 *
@@ -45,7 +45,7 @@ abstract class Base {
 	/**
 	 * Run on an annotated property
 	 *
-	 * @param object              $instance Instance of the object containing the method.
+	 * @param Plugin|Controller  $instance Instance of the object containing the method.
 	 * @param ReflectionProperty $property The property with the annotation.
 	 *
 	 * @throws RuntimeException When method is called but not defined by the child class.
